@@ -43,14 +43,15 @@ static void fillColumn(char* destination, unsigned int mapXCoordinate) {
 /// \details This also fills the whiteNoise array which is used for the
 ///		fillColumn method.
 char** createSomeMap() {
-	for (int i = 0; i < WHITE_NOISE_SIZE; ++i)
-		whiteNoise[i] = rand() * 255 / RAND_MAX;
+	for (int i = 0; i < WHITE_NOISE_SIZE; ++i) {
+		whiteNoise[i] = rand() * 255;
+	}
 
-	char** map = new char*[80 * MAP_SIZE_Y];
+	char** map = new char*[MAP_SIZE_X];
 	// Create and fill the map
-	for (int x = 0; x < 80; ++x) {
+	for (int x = 0; x < MAP_SIZE_X; ++x) {
 		map[x] = new char[MAP_SIZE_Y];
-		fillColumn(*map + x, x);
+		fillColumn(map[x], x);
 	}
 	return map;
 }
@@ -60,18 +61,30 @@ char** createSomeMap() {
 const char ASCII_ART[] = { ' ', '+', '-', '#', 'o' };
 void drawMap(char** map) {
 	for (int y = 0; y < MAP_SIZE_Y; ++y) {
-		for (int x = 0; x < 60; ++x) {
-			std::printf("%c", ASCII_ART[map[y][x]]);
+		for (int x = 0; x < MAP_SIZE_X; ++x) {
+			std::printf("%c", ASCII_ART[(int) (map[x][y])]);
 		}
-		std::cout << '\n';
+		if (y != MAP_SIZE_Y - 1)
+			std::cout << std::endl;
 	}
 }
 
 /// \brief Somehow moves the map by one.
 ///
 void moveMap(char** map) {
+
+	char tmp[MAP_SIZE_Y];
+	memcpy(tmp, map[MAP_SIZE_X - 1], MAP_SIZE_Y);
+	for (int x = MAP_SIZE_X - 1; x > 0; --x) {
+		memcpy(map[x], map[x - 1], MAP_SIZE_Y);
+	}
+	memcpy(map[0], tmp, MAP_SIZE_Y);
 }
 
 void freeMap(char** map) {
 
+	for (int x = 0; x < MAP_SIZE_X; ++x) {
+		delete[] map[x];
+	}
+	delete[] map;
 }

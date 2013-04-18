@@ -13,10 +13,11 @@ int main() {
 	srand(clock());
 
 	char** map = createSomeMap();
-
-	do {
-		drawMap(map);
+	drawMap(map);
+	while (std::cin.get() != '1') {
 		moveMap(map);
-	} while (std::cin.get() == '\n');
+		drawMap(map);
+	}
+	freeMap(map);
 	return 0;
 }
