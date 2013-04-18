@@ -7,17 +7,17 @@
 
 #include <iostream>
 
-void initGame();
-void startGame();
-
-int main(int argc, char **argv) {
-
-	std::cout << "Create game..." << std::endl;
-	initGame();
-
-	std::cout << "Start game..." << std::endl;
-	startGame();
-
-	return 0;
-}
+//void initGame();
+//void startGame();
+//
+//int main(int argc, char **argv) {
+//
+//	std::cout << "Create game..." << std::endl;
+//	initGame();
+//
+//	std::cout << "Start game..." << std::endl;
+//	startGame();
+//
+//	return 0;
+//}
 
