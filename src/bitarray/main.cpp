@@ -51,34 +51,39 @@ int main() {
 	uint32_t initializationA1[] = { 0x0000a8c3 };
 	for (int i = 0; i < 17; ++i)
 		BiA::set(A1, i, (initializationA1[0] >> i) & 1);
-	outputHelper(A1, true);
-	outputHelper(A1, false);
+//	outputHelper(A1, true);
+//	outputHelper(A1, false);
+	std::cout << "Size = " << BiA::getSize(A1) << std::endl;
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << " Set now the Bit at 3 to 0" << std::endl;
+	BiA::set(A1, 3, false);
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << " Set now the Bit at 3 to 1" << std::endl;
+	BiA::set(A1, 3, true);
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
+//	uint32_t initializationA2[] = { 0x98affa34, 0xaffeaffe, 0x07bcdef1 };
+//	for (int i = 0; i < 91; ++i)
+//		BiA::set(A2, i, (initializationA2[i / 32] >> (i & 0x1f)) & 1);
+//
+//	// Change a bit
+//	BiA::toggle(A1, 12);
+//	BiA::toggle(A1, 17);
+//	BiA::toggle(A2, 2);
+//	BiA::toggle(A2, 18);
+//	BiA::toggle(A2, 63);
+//	BiA::set(A1, 1, BiA::get(A2, 23));
+//	BiA::set(A2, 11, BiA::get(A1, 3));
+//
+//	BiA::BitArray A3 = BiA::concatenate(A1, A2);
+//	uint32_t expectedResult[] = { 108, 0xe460b8c3, 0x5ffd3157, 0xbde25ffd,
+//			0x00000f79 };
+//	// If the program stops here one or more of your operators didn't
+//	// work.
+//	assert(memcmp(A3, expectedResult, 4 * 5) == 0);
 
-	uint32_t initializationA2[] = { 0x98affa34, 0xaffeaffe, 0x07bcdef1 };
-	for (int i = 0; i < 91; ++i)
-		BiA::set(A2, i, (initializationA2[i / 32] >> (i & 0x1f)) & 1);
-
-	// Change a bit
-	BiA::toggle(A1, 12);
-	BiA::toggle(A1, 17);
-	BiA::toggle(A2, 2);
-	BiA::toggle(A2, 18);
-	BiA::toggle(A2, 63);
-	BiA::set(A1, 1, BiA::get(A2, 23));
-	BiA::set(A2, 11, BiA::get(A1, 3));
-
-	BiA::BitArray A3 = BiA::concatenate(A1, A2);
-	uint32_t expectedResult[] = { 108, 0xe460b8c3, 0x5ffd3157, 0xbde25ffd,
-			0x00000f79 };
-	// If the program stops here one or more of your operators didn't
-	// work.
-	assert(memcmp(A3, expectedResult, 4 * 5) == 0);
-
-	// If you get a segmentation/.. error here you have written into the
-	// wrong memory before.
+// If you get a segmentation/.. error here you have written into the
+// wrong memory before.
 	delete[] A1;
 	delete[] A2;
-	delete[] A3;
+//	delete[] A3;
 
 	return 0;
 }

@@ -1,5 +1,6 @@
 #include <string>
 #include "bitarray.hpp"
+#include <iostream>
 
 namespace BiA {
 /// \brief Creates a bitarray with at least enough space for numElements
@@ -21,21 +22,30 @@ BitArray BiA::create(int numElements) {
 /// \brief Returns the number of elements in the array.
 ///
 int BiA::getSize(const BitArray& array) {
-	// TODO: Implement
-	return -1;
+	return array[0];
 }
 
 /// \brief Check if the bit is set to 1.
 ///
 bool BiA::get(const BitArray& array, int index) {
-	// TODO: Implement
-	return false;
+	// First index is the number of the array
+	// index / 32 = position in the array == index >> 5
+	int arrayPos = (index >> 5) + 1;
+	int bitPos = (index % 32);
+
+	// Select the single bit at the position
+	return (array[arrayPos] & (1 << bitPos));
 }
 
 /// \brief Set a bit to a value (true=1/false=0)
 ///
 void BiA::set(BitArray& array, int index, bool value) {
-	// TODO: Implement
+	// First index is the number of the array
+	// index / 32 = position in the array == index >> 5
+	int arrayPos = (index >> 5) + 1;
+	int bitPos = (index % 32);
+	// Set the bit at the position
+	array[arrayPos] |= (value << bitPos);
 }
 
 /// \brief Invert the bit at index.
