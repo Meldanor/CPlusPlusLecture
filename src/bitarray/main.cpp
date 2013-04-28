@@ -54,11 +54,21 @@ int main() {
 //	outputHelper(A1, true);
 //	outputHelper(A1, false);
 	std::cout << "Size = " << BiA::getSize(A1) << std::endl;
-	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << " Set now the Bit at 3 to 0" << std::endl;
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3)
+			<< " Set now the Bit at 3 to 0" << std::endl;
 	BiA::set(A1, 3, false);
-	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << " Set now the Bit at 3 to 1" << std::endl;
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3)
+			<< " Set now the Bit at 3 to 1" << std::endl;
 	BiA::set(A1, 3, true);
 	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
+	BiA::set(A1, 3, false);
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
+//	std::cout << "Toogle Bit at 3" << std::endl;
+//	BiA::toggle(A1, 3);
+//	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
+//	std::cout << "Toogle Bit at 3" << std::endl;
+//	BiA::toggle(A1, 3);
+//	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
 //	uint32_t initializationA2[] = { 0x98affa34, 0xaffeaffe, 0x07bcdef1 };
 //	for (int i = 0; i < 91; ++i)
 //		BiA::set(A2, i, (initializationA2[i / 32] >> (i & 0x1f)) & 1);

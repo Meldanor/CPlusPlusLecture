@@ -45,7 +45,10 @@ void BiA::set(BitArray& array, int index, bool value) {
 	int arrayPos = (index >> 5) + 1;
 	int bitPos = (index % 32);
 	// Set the bit at the position
-	array[arrayPos] |= (value << bitPos);
+	if (value)
+		array[arrayPos] |= (1 << bitPos);
+	else
+		array[arrayPos] &= ~(1 << bitPos);
 }
 
 /// \brief Invert the bit at index.
