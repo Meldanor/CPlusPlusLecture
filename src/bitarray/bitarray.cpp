@@ -60,8 +60,18 @@ void BiA::toggle(BitArray& array, int index) {
 /// \brief Create a new array containing all elements of the two arrays
 ///		from input.
 BitArray BiA::concatenate(const BitArray& array1, const BitArray& array2) {
-	// TODO: Implement
-	return NULL;
+	// 1 - size variable
+	// numElements/32 - number of uint32_t for all bits rounded down
+	// round up:  (numElements+31)/32
+	int numElements = BiA::getSize(array1) + BiA::getSize(array2);
+	BitArray theNewOne = BiA::create(numElements);
+	int k = 0;
+	// Very dirty - but steady as she go!
+	for (int i = 0; i < BiA::getSize(array1); ++i, ++k)
+		BiA::set(theNewOne, k, BiA::get(array1, i));
+	for (int i = 0; i < BiA::getSize(array2); ++i, ++k)
+		BiA::set(theNewOne, k, BiA::get(array2, i));
+	return theNewOne;
 }
 
 /// \brief Combine two arrays with a logically or.
