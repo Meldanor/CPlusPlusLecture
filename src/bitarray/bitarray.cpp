@@ -54,7 +54,7 @@ void BiA::set(BitArray& array, int index, bool value) {
 /// \brief Invert the bit at index.
 ///
 void BiA::toggle(BitArray& array, int index) {
-	// TODO: Implement
+	BiA::set(array, index, !(BiA::get(array, index)));
 }
 
 /// \brief Create a new array containing all elements of the two arrays

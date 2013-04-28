@@ -62,13 +62,13 @@ int main() {
 	BiA::set(A1, 3, true);
 	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
 	BiA::set(A1, 3, false);
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl << std::endl;
+	std::cout << "Toogle Bit at 3" << std::endl;
+	BiA::toggle(A1, 3);
 	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
-//	std::cout << "Toogle Bit at 3" << std::endl;
-//	BiA::toggle(A1, 3);
-//	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
-//	std::cout << "Toogle Bit at 3" << std::endl;
-//	BiA::toggle(A1, 3);
-//	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
+	std::cout << "Toogle Bit at 3" << std::endl;
+	BiA::toggle(A1, 3);
+	std::cout << "Bit at 3 = " << BiA::get(A1, 3) << std::endl;
 //	uint32_t initializationA2[] = { 0x98affa34, 0xaffeaffe, 0x07bcdef1 };
 //	for (int i = 0; i < 91; ++i)
 //		BiA::set(A2, i, (initializationA2[i / 32] >> (i & 0x1f)) & 1);
