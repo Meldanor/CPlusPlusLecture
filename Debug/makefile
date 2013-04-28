@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include src/game/subdir.mk
 -include src/debugging/subdir.mk
+-include src/bitarray/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

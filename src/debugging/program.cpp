@@ -6,7 +6,7 @@ void freeMap(char**);
 void drawMap(char**);
 void moveMap(char**);
 
-int main() {
+int main_old() {
 	// Don't call srand() somewhere else.
 	// Use a constant number instead of clock() if you wanna see the
 	// same landscape each time (e.g. for debugging purposes)

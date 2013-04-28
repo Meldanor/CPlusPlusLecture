@@ -25,5 +25,6 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 src/game \
 src/debugging \
+src/bitarray \
 src \
 
