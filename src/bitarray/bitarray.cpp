@@ -86,19 +86,21 @@ BitArray BiA::concatenate(const BitArray& array1, const BitArray& array2) {
 ///		would be a better choice, but the exercise gain is higher in that
 ///		way.
 void BiA::logicalOr(BitArray& array1, const BitArray& array2) {
+	// Resize array 1
 	if (BiA::getSize(array1) < BiA::getSize(array2)) {
-		// !??!?!?!??!
-//
-//		BitArray temp = BiA::create(BiA::getSize(array2));
-//		int size = (BiA::getSize(temp) / 32 ) + 1;
-//		memcpy(temp, array2, size);
-//
-//		memcpy(array2 , array1, (BiA::getSize(array1) / 32 ) + 1);
-//		memcpy(array1 , temp, size);
-//		delete[] temp;
+		// Create bigger array
+		BitArray temp = BiA::create(BiA::getSize(array2));
+		// Copy values to from array 1 to temp array
+		for (int i = 1; i < BiA::getSize(array1); ++i) {
+			temp[i] = array1[i];
+		}
+		delete[] array1;
+		array1 = temp;
 	}
+
+	// DO THE OR
 	int arraySize = BiA::getSize(array1) / 32 + 1;
-	for (int i = 1 ; i< arraySize ; ++i) {
+	for (int i = 1; i < arraySize; ++i) {
 		array1[i] |= array2[i];
 	}
 }

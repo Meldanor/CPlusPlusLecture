@@ -51,8 +51,8 @@ int main() {
 	uint32_t initializationA1[] = { 0x0000a8c3 };
 	for (int i = 0; i < 17; ++i)
 		BiA::set(A1, i, (initializationA1[0] >> i) & 1);
-//	outputHelper(A1, true);
-//	outputHelper(A1, false);
+	outputHelper(A1, true);
+	outputHelper(A1, false);
 //	std::cout << "Size = " << BiA::getSize(A1) << std::endl;
 //	std::cout << "Bit at 3 = " << BiA::get(A1, 3)
 //			<< " Set now the Bit at 3 to 0" << std::endl;
