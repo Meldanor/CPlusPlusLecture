@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <regex.h>
 
 /// \brief List of List of strings, representing a table
 typedef std::vector<std::vector<std::string> > Table;
@@ -19,3 +20,6 @@ Table itemArrayFromCSV(const std::string& csv);
 /// \brief Prints a csv table to the console.
 /// \param table	table consisting out of list of list of strings (=items)
 void printTable(const Table& tableItems);
+
+std::string extractString(regmatch_t* cur, regmatch_t* prev,
+		const char* string);

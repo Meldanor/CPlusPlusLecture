@@ -18,6 +18,7 @@ int main(int numArguments, char** arguments)
 		std::cerr << "Error reading file!\n" << std::endl;
 		return 1;
 	}
+	std::cout << fileAsString << std::endl << std::endl;
 
 	// break down into items
 	Table table = itemArrayFromCSV(fileAsString);
