@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/regex/subdir.mk
 -include src/game/subdir.mk
 -include src/debugging/subdir.mk
 -include src/bitarray/subdir.mk
@@ -41,19 +42,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: C++Vorlesung.exe
+all: CPlusPlusLecture.exe
 
 # Tool invocations
-C++Vorlesung.exe: $(OBJS) $(USER_OBJS)
+CPlusPlusLecture.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cygwin C++ Linker'
-	g++ -static-libgcc -o "C++Vorlesung.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -static-libgcc -o "CPlusPlusLecture.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) C++Vorlesung.exe
+	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) CPlusPlusLecture.exe
 	-@echo ' '
 
 .PHONY: all clean dependents

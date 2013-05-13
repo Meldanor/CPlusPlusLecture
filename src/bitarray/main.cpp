@@ -44,7 +44,7 @@ void outputHelper(const BiA::BitArray& array, bool binaryRepresentation) {
 ///		functions.
 ///
 ///		You can change the code and add further case to make individual tests.
-int main() {
+int mainBitArray() {
 	// Create and fill
 	BiA::BitArray A1 = BiA::create(17);
 	BiA::BitArray A2 = BiA::create(91);
