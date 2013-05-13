@@ -20,6 +20,6 @@ Table itemArrayFromCSV(const std::string& csv);
 /// \brief Prints a csv table to the console.
 /// \param table	table consisting out of list of list of strings (=items)
 void printTable(const Table& tableItems);
-
-std::string extractString(regmatch_t* cur, regmatch_t* prev,
-		const char* string);
+//
+//std::string extractString(regmatch_t* cur, regmatch_t* prev,
+//		const char* string);
