@@ -14,8 +14,9 @@ using namespace std;
 class Tree {
 
 public:
-	Tree(const char*, bool);
-	Tree(const char*, const char*, const char*, Tree*, bool);
+	Tree(const char*);
+	Tree(const char*, const char*, const char*, Tree*);
+	Tree::Tree(const char*, const char*, Tree*);
 
 	bool isLeave();
 
@@ -38,22 +39,33 @@ private:
 	const char *optionText;
 	const char *actionText;
 	bool end;
-};
+}
+;
 
 // Beginning of the story node
-Tree::Tree(const char* storyText, bool end = false) {
+Tree::Tree(const char* storyText) {
 	this->storyText = storyText;
 	this->optionText = NULL;
 	this->actionText = NULL;
-	this->end = end;
+	this->end = false;
 	this->root = NULL;
 }
 
-Tree::Tree(const char* storyText, const char* optionText,
-		const char* actionText, Tree* root, bool end = false) {
+Tree::Tree(const char* optionText, const char* actionText,
+		const char* storyText, Tree* root) {
 	this->storyText = storyText;
 	this->optionText = optionText;
-	this->end = end;
+	this->end = false;
+	this->actionText = actionText;
+
+	this->root = root;
+	this->root->add(this);
+}
+
+Tree::Tree(const char* optionText, const char* actionText, Tree* root) {
+	this->storyText = NULL;
+	this->optionText = optionText;
+	this->end = true;
 	this->actionText = actionText;
 
 	this->root = root;
@@ -113,17 +125,37 @@ int getOption() {
 Tree story("");
 
 void initGame() {
-	Tree first("Sie gehen in einen Wald. Was nun?");
-
+	Tree first("Du wachst mitten in der Nacht auf. Es ist still.");
+	Tree *t = NULL;
+	Tree *temp = NULL;
 	{
-		Tree *t = new Tree("Sie befinden sich im Norden.", "Nach Norden",
-				"Gehe nach Norden...", &first);
-		t = new Tree("Sie befinden sich im Osten.", "Nach Osten",
-				"Gehe nach Osten...", &first);
-		t = new Tree("Sie befinden sich im Sueden.", "Nach Sueden",
-				"Gehe nach Sueden...", &first);
-		t = new Tree("Sie befinden sich im Westen.", "Nach West",
-				"Gehe nach Westen...", &first);
+		t = new Tree("Weiterschlafen",
+				"Du schlaefst wieder ein und wachst nie wieder auf...", &first);
+
+		t = new Tree("Aufstehen", "Du stehst auf",
+				"Du bist wach. Es ist immer noch still. Zu still.", &first);
+		{
+			temp = t;
+			t = new Tree("Licht anschalten", "Es geht nicht an",
+					"Du hast nichts erreicht", temp);
+			t->add(temp);
+
+			t =
+					new Tree("Nach unten gehen",
+							"Du willst die Tuer oeffnen. Sie ist verschlossen!",
+							"Du bist in deinem Zimmer eingeschlossen...Du bekommst langsam Panik",
+							temp);
+
+			{
+				temp = t;
+				t = new Tree("Aufwachen",
+						"Du wachst auf...das denkst du jedenfalls...", "",
+						temp);
+				t->add(&first);
+			}
+
+		}
+
 	}
 
 	story = first;
